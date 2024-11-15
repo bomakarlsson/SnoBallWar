@@ -4,42 +4,60 @@ using UnityEngine.InputSystem;
 public class BallLauncher : MonoBehaviour
 {
     public Transform spawnPoint; // Reference to the spawn point (where balls are located)
-    public float launchForce = 500f; // Force to apply to launch the ball
+    public float minLaunchForce = 750f; // Minimum force
+    public float maxLaunchForce = 1500f; // Maximum force
+    public float maxHoldTime = 1f; // Maximum hold time for full force
+
+    private float holdTime = 0f; // Tracks how long the button is held
+    private bool isHolding = false; // Tracks whether the button is being held
 
     public void OnFire(InputAction.CallbackContext context)
     {
-        // Check if the button/trigger was released
+        if (context.started)
+        {            
+            isHolding = true;
+            holdTime = 0f;
+        }
+
         if (context.canceled)
-        {
+        {            
+            isHolding = false;
             LaunchBall();
         }
     }
 
+    private void Update()
+    {        
+        if (isHolding)
+        {
+            holdTime += Time.deltaTime;
+        }
+    }
+
     private void LaunchBall()
-    {
-        // Find the first inactive ball under the spawn point
+    {        
+        float clampedHoldTime = Mathf.Clamp(holdTime, 0f, maxHoldTime);
+                
+        float launchForce = Mathf.Lerp(minLaunchForce, maxLaunchForce, clampedHoldTime / maxHoldTime);
+               
         foreach (Transform child in spawnPoint)
         {
             if (!child.gameObject.activeInHierarchy)
-            {
-                // Activate the ball and apply an upward force
+            {                
                 child.gameObject.SetActive(true);
-
-                // Remove the ball from being a child of the spawner
+                                
                 child.parent = null;
 
-                // Ensure the ball has a Rigidbody component to apply force
                 Rigidbody rb = child.GetComponent<Rigidbody>();
-                if (rb != null)
-                {
-                    rb.velocity = Vector3.zero; // Reset velocity
-                    rb.AddForce(Vector3.up * launchForce); // Apply upward force
-                }
+                rb.velocity = Vector3.zero; 
+                rb.AddForce(Vector3.up * launchForce); 
 
-                break; // Exit the loop after launching one ball
+                break; 
             }
         }
     }
 }
+
+
 
 
