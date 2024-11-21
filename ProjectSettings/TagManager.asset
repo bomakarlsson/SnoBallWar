@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Team 1
+  - Team 2
+  - Team1WinCanvas
+  - Team2WinCanvas
   layers:
   - Default
   - TransparentFX
@@ -11,7 +15,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - Ball
   - 
   - 
   - 

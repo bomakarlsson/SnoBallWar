@@ -46,6 +46,8 @@ GameObject:
   - component: {fileID: 8436274369547740860}
   - component: {fileID: 1667382220263661810}
   - component: {fileID: 7436400405579774296}
+  - component: {fileID: 8336485882824863890}
+  - component: {fileID: 2142990998680243207}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -302,7 +304,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   speed: 14
-  jumpingPower: 20
+  jumpingPower: 25
 --- !u!50 &1667382220263661810
 Rigidbody2D:
   serializedVersion: 4
@@ -362,9 +364,58 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.17}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0, y: 1.41}
+  m_Size: {x: 0.45, y: 4.5}
   m_Direction: 0
+--- !u!70 &8336485882824863890
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3927257592554278932}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 63
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1.44}
+  m_Size: {x: 0.73, y: 4.83}
+  m_Direction: 0
+--- !u!114 &2142990998680243207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3927257592554278932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1d84f5bfc1a68469607f4663cb1726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  teamTag: Team 1
 --- !u!1 &6265937028539306722
 GameObject:
   m_ObjectHideFlags: 0

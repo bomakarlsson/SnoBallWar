@@ -44,7 +44,9 @@ public class BallSpawner : MonoBehaviour
     {        
         GameObject spawnedBall = Instantiate(ballPrefab, spawnPoint.position, spawnPoint.rotation);
         spawnedBall.transform.parent = transform;
-                
+
+        spawnedBall.tag = this.tag;
+
         spawnedBall.SetActive(false);
     }
 }

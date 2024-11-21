@@ -50,7 +50,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3927257592554278932, guid: 7a2074adc1036de4e844471492a8aa24, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927257592554278932, guid: 7a2074adc1036de4e844471492a8aa24, type: 3}
+      propertyPath: m_TagString
+      value: Team 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6265937028539306722, guid: 7a2074adc1036de4e844471492a8aa24, type: 3}
+      propertyPath: m_TagString
+      value: Team 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

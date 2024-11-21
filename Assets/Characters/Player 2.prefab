@@ -48,14 +48,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2142990998680243207, guid: 7a2074adc1036de4e844471492a8aa24, type: 3}
+      propertyPath: teamTag
+      value: Team 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3927257592554278932, guid: 7a2074adc1036de4e844471492a8aa24, type: 3}
       propertyPath: m_Name
-      value: Player Variant 2
+      value: Player 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927257592554278932, guid: 7a2074adc1036de4e844471492a8aa24, type: 3}
+      propertyPath: m_TagString
+      value: Team 2
       objectReference: {fileID: 0}
     - target: {fileID: 5393588584459065589, guid: 7a2074adc1036de4e844471492a8aa24, type: 3}
       propertyPath: m_Materials.Array.data[4]
       value: 
       objectReference: {fileID: 2100000, guid: 0aa96803282a24a49b12965762cae13a, type: 2}
+    - target: {fileID: 6265937028539306722, guid: 7a2074adc1036de4e844471492a8aa24, type: 3}
+      propertyPath: m_TagString
+      value: Team 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
