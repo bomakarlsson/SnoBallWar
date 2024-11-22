@@ -1,11 +1,14 @@
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 100;
-    private int currentHealth;
+    [SerializeField] public int maxHealth = 100;
+    public int currentHealth;
 
     [SerializeField] private string teamTag = "Team 1";
+
+    [SerializeField] private Slider healthSlider; // Reference to the Slider component
 
     private GameObject winCanvasTeam1;
     private GameObject winCanvasTeam2;
@@ -17,27 +20,11 @@ public class PlayerHealth : MonoBehaviour
         winCanvasTeam1 = GameObject.FindWithTag("Team1WinCanvas");
         winCanvasTeam2 = GameObject.FindWithTag("Team2WinCanvas");
 
-        /*
-        if (winCanvasTeam1 != null)
+        if (healthSlider != null)
         {
-            ToggleCanvasChildren(winCanvasTeam1, false); // Ensure children are deactivated
-            Debug.Log("Team1WinCanvas found and its children deactivated!");
-        }
-        else
-        {
-            Debug.LogError("Team1WinCanvas not found!");
-        }
-
-        if (winCanvasTeam2 != null)
-        {
-            ToggleCanvasChildren(winCanvasTeam2, false); // Ensure children are deactivated
-            Debug.Log("Team2WinCanvas found and its children deactivated!");
-        }
-        else
-        {
-            Debug.LogError("Team2WinCanvas not found!");
-        }
-        */
+            healthSlider.maxValue = maxHealth; // Set slider max value
+            healthSlider.value = currentHealth; // Initialize slider value
+        }       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -56,9 +43,19 @@ public class PlayerHealth : MonoBehaviour
 
         Debug.Log($"{gameObject.name} took {damage} damage. Current health: {currentHealth}");
 
+        UpdateHealthSlider(); // Update the slider whenever health changes
+
         if (currentHealth <= 0)
         {
             Die();
+        }
+    }
+
+    private void UpdateHealthSlider()
+    {
+        if (healthSlider != null)
+        {
+            healthSlider.value = currentHealth; // Sync the slider value with current health
         }
     }
 
@@ -104,6 +101,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 }
+
 
 
 

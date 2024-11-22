@@ -414,7 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc1d84f5bfc1a68469607f4663cb1726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 100
   teamTag: Team 1
 --- !u!1 &6265937028539306722
 GameObject:
