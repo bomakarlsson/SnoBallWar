@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] public int maxHealth = 100;
-    public int currentHealth;
+    private int currentHealth;
 
     [SerializeField] private string teamTag = "Team 1";
 
