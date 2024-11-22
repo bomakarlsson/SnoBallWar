@@ -32,11 +32,11 @@ public class TilePlacer : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             placeTile(tilemap.WorldToCell(GetMousePosition()));
         }
-        else if (Input.GetMouseButtonDown(1))
+        else if (Input.GetMouseButton(1))
         {
             removeTile(tilemap.WorldToCell(GetMousePosition()));
         }
