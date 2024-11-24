@@ -164,6 +164,17 @@
                 },
                 {
                     "name": "",
+                    "id": "9b8e31f0-bdae-4712-a1aa-29a0a7c7aa94",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "6a249b3c-609a-4464-9b44-9b34a7dd5f0b",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
