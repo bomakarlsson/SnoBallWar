@@ -12,17 +12,14 @@ public class TilePlacer : MonoBehaviour
     {
         tilemap = GetComponent<Tilemap>();
     }
-
-    Vector3 GetMousePosition()
-    {
-        return Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, 
-                                                          Input.mousePosition.y,
-                                                          Camera.main.transform.position.z * -1));     
-    }
-
     void placeTile(Vector3Int cellPosition)
     {
         tilemap.SetTile(cellPosition, tile);
+    }
+
+    public void placeTile(Vector3 position)
+    {
+        placeTile(tilemap.WorldToCell(position));
     }
 
     void removeTile(Vector3Int cellPosition)
@@ -30,15 +27,8 @@ public class TilePlacer : MonoBehaviour
         tilemap.SetTile(cellPosition, null);
     }
 
-    void Update()
+    public void removeTile(Vector3 position)
     {
-        if (Input.GetMouseButton(0))
-        {
-            placeTile(tilemap.WorldToCell(GetMousePosition()));
-        }
-        else if (Input.GetMouseButton(1))
-        {
-            removeTile(tilemap.WorldToCell(GetMousePosition()));
-        }
+        removeTile(tilemap.WorldToCell(position));
     }
 }
