@@ -6,7 +6,7 @@ public class BallSpawner : MonoBehaviour
     public GameObject ballPrefab;
     public Transform spawnPoint;
     private int maxBalls = 5;
-    [SerializeField] float holdTimeThreshold = 0.5f;
+    [SerializeField] float holdTimeThreshold = 0.5f; // Time required to hold before spawning a ball
     private float holdTime = 0f;
     private bool isHoldingButton = false;
     private int lastBallCount = 0;
@@ -17,13 +17,13 @@ public class BallSpawner : MonoBehaviour
     {
         if (context.started)
         {
-            isHoldingButton = true;
+            isHoldingButton = true; // Start tracking button hold
         }
 
         if (context.canceled)
         {
-            isHoldingButton = false;
-            holdTime = 0f;
+            isHoldingButton = false; // Stop tracking button hold
+            holdTime = 0f; // Reset hold time
         }
     }
 
@@ -33,11 +33,11 @@ public class BallSpawner : MonoBehaviour
         {
             holdTime += Time.deltaTime;
 
+            // Check if hold time exceeds the threshold and there is room for more balls
             if (holdTime >= holdTimeThreshold && transform.childCount < maxBalls)
             {
                 SpawnBall();
-                holdTime = 0f;
-                isHoldingButton = false;
+                holdTime = 0f; // Reset hold time to allow for continuous spawning
             }
         }
 
@@ -78,6 +78,7 @@ public class BallSpawner : MonoBehaviour
         }
     }
 }
+
 
 
 
