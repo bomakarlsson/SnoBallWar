@@ -18,6 +18,7 @@ public class BuildAndDig : MonoBehaviour
         {
             tilePlacer.FillCircleWithTiles(hitPosition, squareRadius);
             Debug.Log("Building");
+            validAim = false;
         }
     }
 
@@ -27,6 +28,7 @@ public class BuildAndDig : MonoBehaviour
         {
             tilePlacer.FillSquareWithTiles(hitPosition, squareRadius, false);
             Debug.Log("Digging");
+            validAim = false;
         }
     }
 

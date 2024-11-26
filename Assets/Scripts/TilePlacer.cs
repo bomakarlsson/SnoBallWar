@@ -7,10 +7,12 @@ public class TilePlacer : MonoBehaviour
 {
     Tilemap tilemap;
     public TileBase tile;
+    float tileSize = 1f;
 
     void Awake()
     {
         tilemap = GetComponent<Tilemap>();
+        tileSize = transform.parent.GetComponent<Grid>().cellSize.x;
     }
     void placeTile(Vector3Int cellPosition)
     {
@@ -34,13 +36,32 @@ public class TilePlacer : MonoBehaviour
 
     public void FillCircleWithTiles(Vector2 center, float radius, bool fill = true)
     {
-        for (int x = -Mathf.FloorToInt(radius); x <= Mathf.FloorToInt(radius); x++)
+        float radiusInTiles = radius * tileSize;
+
+        //draw the radius in tiles
+        Debug.DrawLine(center, center + new Vector2(0, radiusInTiles), Color.blue, 2.0f);
+        
+        int diameterInTiles = Mathf.CeilToInt(radiusInTiles * 2);
+
+        //draw bounding box
+        Debug.DrawLine(center + new Vector2(-radiusInTiles, -radiusInTiles), 
+                       center + new Vector2(radiusInTiles, -radiusInTiles), Color.green, 2.0f);
+        Debug.DrawLine(center + new Vector2(radiusInTiles, -radiusInTiles),
+                       center + new Vector2(radiusInTiles, radiusInTiles), Color.green, 2.0f);
+        Debug.DrawLine(center + new Vector2(radiusInTiles, radiusInTiles),
+                       center + new Vector2(-radiusInTiles, radiusInTiles), Color.green, 2.0f);
+        Debug.DrawLine(center + new Vector2(-radiusInTiles, radiusInTiles),
+                       center + new Vector2(-radiusInTiles, -radiusInTiles), Color.green, 2.0f);
+
+        for (int x = -diameterInTiles; x <= diameterInTiles; x++)
         {
-            for (int y = -Mathf.FloorToInt(radius); y <= Mathf.FloorToInt(radius); y++)
+            for (int y = -diameterInTiles; y <= diameterInTiles; y++)
             {
-                Vector2 position = new Vector2(center.x + x, center.y + y);
-                if (Vector2.Distance(center, position) <= radius)
+                // Do x * radiusInTiles for slope
+                Vector2 position = new Vector2(center.x + x * tileSize, center.y + y * tileSize);
+                if (Vector2.Distance(center, position) <= radiusInTiles)
                 {
+                    Debug.DrawLine(center, position, Color.red, 2.0f); // Visualize the positions
                     if (fill)
                         placeTile(position);
                     else
@@ -52,11 +73,12 @@ public class TilePlacer : MonoBehaviour
 
     public void FillSquareWithTiles(Vector2 center, float radius, bool fill = true)
     {
-        for (int x = -Mathf.FloorToInt(radius); x <= Mathf.FloorToInt(radius); x++)
+        int diameterInTiles = Mathf.CeilToInt(radius * tileSize * 2);
+        for (int x = -diameterInTiles; x <= diameterInTiles; x++)
         {
-            for (int y = -Mathf.FloorToInt(radius); y <= Mathf.FloorToInt(radius); y++)
+            for (int y = -diameterInTiles; y <= diameterInTiles; y++)
             {
-                Vector2 position = new Vector2(center.x + x, center.y + y);
+                Vector2 position = new Vector2(center.x + x * tileSize, center.y + y * tileSize);
                 if (fill)
                     placeTile(position);
                 else
@@ -64,5 +86,4 @@ public class TilePlacer : MonoBehaviour
             }
         }
     }
-
 }
