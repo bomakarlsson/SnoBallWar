@@ -31,4 +31,38 @@ public class TilePlacer : MonoBehaviour
     {
         removeTile(tilemap.WorldToCell(position));
     }
+
+    public void FillCircleWithTiles(Vector2 center, float radius, bool fill = true)
+    {
+        for (int x = -Mathf.FloorToInt(radius); x <= Mathf.FloorToInt(radius); x++)
+        {
+            for (int y = -Mathf.FloorToInt(radius); y <= Mathf.FloorToInt(radius); y++)
+            {
+                Vector2 position = new Vector2(center.x + x, center.y + y);
+                if (Vector2.Distance(center, position) <= radius)
+                {
+                    if (fill)
+                        placeTile(position);
+                    else
+                        removeTile(position);
+                }
+            }
+        }
+    }
+
+    public void FillSquareWithTiles(Vector2 center, float radius, bool fill = true)
+    {
+        for (int x = -Mathf.FloorToInt(radius); x <= Mathf.FloorToInt(radius); x++)
+        {
+            for (int y = -Mathf.FloorToInt(radius); y <= Mathf.FloorToInt(radius); y++)
+            {
+                Vector2 position = new Vector2(center.x + x, center.y + y);
+                if (fill)
+                    placeTile(position);
+                else
+                    removeTile(position);
+            }
+        }
+    }
+
 }
