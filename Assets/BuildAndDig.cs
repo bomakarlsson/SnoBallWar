@@ -16,7 +16,7 @@ public class BuildAndDig : MonoBehaviour
     {
         if (validAim && context.performed)
         {
-            tilePlacer.FillCircleWithTiles(hitPosition, squareRadius);
+            tilePlacer.FillSquareWithTiles(hitPosition, squareRadius);
             Debug.Log("Building");
             validAim = false;
         }
