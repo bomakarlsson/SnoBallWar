@@ -5,30 +5,29 @@ public class BuildAndDig : MonoBehaviour
 {
     [SerializeField] TilePlacer tilePlacer;
     [SerializeField] float rayDistance = 7f; // Maximum distance for the raytrace
-    [SerializeField] float squareRadius = 1f; // Radius of the square to fill
+    [SerializeField] float fillRadius = 1f; // Radius of the square to fill
 
     Vector2 aimDirection = Vector2.zero;
 
-    bool validAim = false;
+    bool validDig = false;
+    bool validBuild = false;
     Vector2 hitPosition = Vector2.zero;
 
     public void Build(InputAction.CallbackContext context)
     {
-        if (validAim && context.performed)
+        if (validBuild && context.performed)
         {
-            tilePlacer.FillSquareWithTiles(hitPosition, squareRadius);
+            tilePlacer.FillSquareWithTiles(hitPosition, fillRadius);
             Debug.Log("Building");
-            validAim = false;
         }
     }
 
     public void Dig(InputAction.CallbackContext context)
     {
-        if (validAim && context.performed)
+        if (validDig && context.performed)
         {
-            tilePlacer.FillSquareWithTiles(hitPosition, squareRadius, false);
+            tilePlacer.FillSquareWithTiles(hitPosition, fillRadius, false);
             Debug.Log("Digging");
-            validAim = false;
         }
     }
 
@@ -39,16 +38,27 @@ public class BuildAndDig : MonoBehaviour
         if (aimDirection != Vector2.zero)
         {
             Ray2D ray = new Ray2D(transform.position, aimDirection);
-
             Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);
 
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, rayDistance, LayerMask.GetMask("Ground"));
+            RaycastHit2D groundHit = Physics2D.Raycast(ray.origin, ray.direction, rayDistance, LayerMask.GetMask("Ground"));
 
-            if (hit.collider != null)
+            if (groundHit.collider != null)
             {
-                validAim = true;
-                hitPosition = hit.point;
+                hitPosition = groundHit.point;
+                validDig = true;
+
+                //OBS checks for all colliders in player layer
+                RaycastHit2D playerHit = Physics2D.CircleCast(groundHit.point, fillRadius, Vector2.zero, 0f, LayerMask.GetMask("Player"));
+                if (playerHit.collider == null)
+                {
+                    validBuild = true;
+                }
+                else
+                    validBuild = false;
             }
+            else
+                validDig = false;
         }
     }
 }
+ 
