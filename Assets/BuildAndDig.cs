@@ -59,6 +59,8 @@ public class BuildAndDig : MonoBehaviour
 
     private IEnumerator Building()
     {
+        yield return new WaitForSeconds(buildTime);
+
         while (true)
         {
             if (validBuild)
@@ -69,12 +71,14 @@ public class BuildAndDig : MonoBehaviour
                     tilePlacer.FillCircleWithTiles(hitPosition, fillRadius);
                 Debug.Log("Building");
             }
-            yield return new WaitForSeconds(buildTime); // Continue in the next frame
+            yield return new WaitForSeconds(buildTime);
         }
     }
 
     private IEnumerator Digging()
     {
+        yield return new WaitForSeconds(digTime);
+
         while (true)
         {
             if (validDig)
@@ -85,7 +89,7 @@ public class BuildAndDig : MonoBehaviour
                     tilePlacer.FillCircleWithTiles(hitPosition, fillRadius * digFillMultiplier, false);
                 Debug.Log("Digging");
             }
-            yield return new WaitForSeconds(digTime); // Continue in the next frame
+            yield return new WaitForSeconds(digTime);
         }
     }
 
