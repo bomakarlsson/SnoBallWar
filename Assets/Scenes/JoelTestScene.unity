@@ -18236,8 +18236,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePlacer: {fileID: 433286662}
-  rayDistance: 6
-  squareRadius: 3
+  aimDistance: 7
+  fillRadius: 1.5
+  digFillMultiplier: 1.8
+  digTime: 0.3
+  buildTime: 0.4
 --- !u!1 &1280776088
 GameObject:
   m_ObjectHideFlags: 0

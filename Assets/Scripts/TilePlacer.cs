@@ -39,19 +39,19 @@ public class TilePlacer : MonoBehaviour
         float radiusInTiles = radius * tileSize;
 
         //draw the radius in tiles
-        Debug.DrawLine(center, center + new Vector2(0, radiusInTiles), Color.blue, 2.0f);
+        Debug.DrawLine(center, center + new Vector2(0, radiusInTiles), Color.blue, 1.0f);
         
         int diameterInTiles = Mathf.CeilToInt(radiusInTiles * 2);
 
         //draw bounding box
         Debug.DrawLine(center + new Vector2(-radiusInTiles, -radiusInTiles), 
-                       center + new Vector2(radiusInTiles, -radiusInTiles), Color.green, 2.0f);
+                       center + new Vector2(radiusInTiles, -radiusInTiles), Color.green, 1.0f);
         Debug.DrawLine(center + new Vector2(radiusInTiles, -radiusInTiles),
-                       center + new Vector2(radiusInTiles, radiusInTiles), Color.green, 2.0f);
+                       center + new Vector2(radiusInTiles, radiusInTiles), Color.green, 1.0f);
         Debug.DrawLine(center + new Vector2(radiusInTiles, radiusInTiles),
-                       center + new Vector2(-radiusInTiles, radiusInTiles), Color.green, 2.0f);
+                       center + new Vector2(-radiusInTiles, radiusInTiles), Color.green, 1.0f);
         Debug.DrawLine(center + new Vector2(-radiusInTiles, radiusInTiles),
-                       center + new Vector2(-radiusInTiles, -radiusInTiles), Color.green, 2.0f);
+                       center + new Vector2(-radiusInTiles, -radiusInTiles), Color.green, 1.0f);
 
         for (int x = -diameterInTiles; x <= diameterInTiles; x++)
         {
@@ -61,7 +61,7 @@ public class TilePlacer : MonoBehaviour
                 Vector2 position = new Vector2(center.x + x * tileSize, center.y + y * tileSize);
                 if (Vector2.Distance(center, position) <= radiusInTiles)
                 {
-                    Debug.DrawLine(center, position, Color.red, 2.0f); // Visualize the positions
+                    Debug.DrawLine(center, position, Color.red, 1.0f); // Visualize the positions
                     if (fill)
                         placeTile(position);
                     else
