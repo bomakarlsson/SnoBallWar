@@ -8,17 +8,16 @@ public class BuildAndDig : MonoBehaviour
     [SerializeField] float aimDistance = 7f;
     [SerializeField] float fillRadius = 1f;
     [SerializeField] float digFillMultiplier = 1f;
-    [SerializeField] float digTime = 0.5f;
-    [SerializeField] float buildTime = 0.5f; // Time interval for building
+    [SerializeField] float buildTime, digTime = 0.5f;
+    [SerializeField] bool squareBuild, squareDig = false;
+
 
     Vector2 aimDirection = Vector2.zero;
 
-    bool validDig = false;
-    bool validBuild = false;
+    bool validBuild, validDig = false;
     Vector2 hitPosition = Vector2.zero;
 
-    private Coroutine digCoroutine;
-    private Coroutine buildCoroutine;
+    private Coroutine buildCoroutine, digCoroutine;
 
     public void Build(InputAction.CallbackContext context)
     {
@@ -35,7 +34,6 @@ public class BuildAndDig : MonoBehaviour
             {
                 StopCoroutine(buildCoroutine);
                 buildCoroutine = null;
-                Debug.Log("Stopped Building");
             }
         }
     }
@@ -55,7 +53,6 @@ public class BuildAndDig : MonoBehaviour
             {
                 StopCoroutine(digCoroutine);
                 digCoroutine = null;
-                Debug.Log("Stopped Digging");
             }
         }
     }
@@ -66,7 +63,10 @@ public class BuildAndDig : MonoBehaviour
         {
             if (validBuild)
             {
-                tilePlacer.FillCircleWithTiles(hitPosition, fillRadius);
+                if (squareBuild)
+                    tilePlacer.FillSquareWithTiles(hitPosition, fillRadius);
+                else
+                    tilePlacer.FillCircleWithTiles(hitPosition, fillRadius);
                 Debug.Log("Building");
             }
             yield return new WaitForSeconds(buildTime); // Continue in the next frame
@@ -79,7 +79,10 @@ public class BuildAndDig : MonoBehaviour
         {
             if (validDig)
             {
-                tilePlacer.FillCircleWithTiles(hitPosition, fillRadius * digFillMultiplier, false);
+                if (squareDig)
+                    tilePlacer.FillSquareWithTiles(hitPosition, fillRadius * digFillMultiplier, false);
+                else
+                    tilePlacer.FillCircleWithTiles(hitPosition, fillRadius * digFillMultiplier, false);
                 Debug.Log("Digging");
             }
             yield return new WaitForSeconds(digTime); // Continue in the next frame
