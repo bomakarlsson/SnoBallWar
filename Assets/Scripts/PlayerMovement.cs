@@ -57,7 +57,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void Aim(InputAction.CallbackContext context)
     {     
-        aimDirection = context.ReadValue<Vector2>();
+        if (context.control.device.name == "Mouse")
+        {
+            Vector3 mousePosition = context.ReadValue<Vector2>();
+            Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, 
+                                                                                    mousePosition.y, 
+                                                                                    Camera.main.transform.position.z * -1));
+            aimDirection = worldMousePosition - transform.position;
+        }
+        else
+            aimDirection = context.ReadValue<Vector2>();
     }
 
     private void UpdateFacingDirection()

@@ -42,7 +42,16 @@ public class BallLauncher : MonoBehaviour
 
     public void OnAim(InputAction.CallbackContext context)
     {        
-        aimDirection = context.ReadValue<Vector2>().normalized;
+        if (context.control.device.name == "Mouse")
+        {
+            Vector3 mousePosition = context.ReadValue<Vector2>();
+            Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, 
+                                                                                    mousePosition.y, 
+                                                                                    Camera.main.transform.position.z * -1));
+            aimDirection = (worldMousePosition - transform.position).normalized;
+        }
+        else
+            aimDirection = context.ReadValue<Vector2>().normalized;
                
         if (aimDirection == Vector2.zero)
         {
