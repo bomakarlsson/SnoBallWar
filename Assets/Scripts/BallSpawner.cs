@@ -13,17 +13,48 @@ public class BallSpawner : MonoBehaviour
 
     [SerializeField] private GameObject[] ballUIImages; // Array to link UI image objects in inspector
 
+    private PlayerMovement playerMovement; // Reference to the PlayerMovement script
+
+    private void Start()
+    {
+        // Find the PlayerMovement script on the same object or parent
+        playerMovement = GetComponentInParent<PlayerMovement>();
+
+        if (playerMovement != null)
+        {
+            Debug.Log($"PlayerMovement script found on {playerMovement.gameObject.name}");
+        }
+        else
+        {
+            Debug.LogError("PlayerMovement script not found. Ensure BallSpawner is on the same player hierarchy.");
+        }
+    }
+
     public void OnMakeBall(InputAction.CallbackContext context)
     {
         if (context.started)
         {
             isHoldingButton = true; // Start tracking button hold
+
+            // Disable movement
+            if (playerMovement != null)
+            {
+                playerMovement.enabled = false;
+                Debug.Log("Player movement disabled.");
+            }
         }
 
         if (context.canceled)
         {
             isHoldingButton = false; // Stop tracking button hold
             holdTime = 0f; // Reset hold time
+
+            // Re-enable movement only when input is released
+            if (playerMovement != null)
+            {
+                playerMovement.enabled = true;
+                Debug.Log("Player movement re-enabled.");
+            }
         }
     }
 
@@ -78,6 +109,8 @@ public class BallSpawner : MonoBehaviour
         }
     }
 }
+
+
 
 
 
