@@ -10,7 +10,7 @@ public class BuildAndDig : MonoBehaviour
     [SerializeField] float digFillMultiplier = 1f;
     [SerializeField] float buildTime, digTime = 0.5f;
     [SerializeField] bool squareBuild, squareDig = false;
-
+    [SerializeField] bool drawIndicators = true;
 
     Vector2 aimDirection = Vector2.zero;
 
@@ -144,10 +144,12 @@ public class BuildAndDig : MonoBehaviour
 
         Ray2D ray = new Ray2D(transform.position, aimDirection);
         
-        // Visual representation
-        Debug.DrawRay(ray.origin, ray.direction * aimDistance, Color.red);
-        aimDrawer.target = (Vector2)transform.position + aimDirection * aimDistance;
-        aimDrawer.enabled = true;
+        if (drawIndicators)
+        {
+            // Debug.DrawRay(ray.origin, ray.direction * aimDistance, Color.red);
+            aimDrawer.target = (Vector2)transform.position + aimDirection * aimDistance;
+            aimDrawer.enabled = true;
+        }
 
         RaycastHit2D groundHit = Physics2D.Raycast(ray.origin, ray.direction, aimDistance, LayerMask.GetMask("Ground"));
         if (groundHit.collider == null)
@@ -162,9 +164,11 @@ public class BuildAndDig : MonoBehaviour
         hitPosition = groundHit.point;
         validDig = true;
 
-        // Visual representation
-        DigIndicator.transform.position = groundHit.point;
-        DigIndicator.enabled = true;
+        if (drawIndicators)
+        {
+            DigIndicator.transform.position = groundHit.point;
+            DigIndicator.enabled = true;
+        }
 
         // OBS checks for all colliders in player layer
         // (should maybe be square cast)
@@ -172,8 +176,11 @@ public class BuildAndDig : MonoBehaviour
         if (playerHit.collider == null)
         {
             validBuild = true;
-            BuildIndicator.transform.position = groundHit.point;
-            BuildIndicator.enabled = true;
+            if (drawIndicators)
+            {
+                BuildIndicator.transform.position = groundHit.point;
+                BuildIndicator.enabled = true;
+            }
         }
         else
         {
