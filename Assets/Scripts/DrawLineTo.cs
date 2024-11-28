@@ -10,12 +10,12 @@ public class DrawLineTo : MonoBehaviour
 
     void Awake()
     {
+        lineRenderer = GetComponent<LineRenderer>();
         DisableLine();
     }
 
     void OnEnable()
     {
-        lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 2;
     }
 
