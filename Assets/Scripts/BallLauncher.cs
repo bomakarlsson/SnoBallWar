@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 public class BallLauncher : MonoBehaviour
 {
+    Animator animator;
+    public GameObject player;
+
     public Transform spawnPoint; 
     public Transform arrow;
     [SerializeField] float minLaunchForce = 750f;
@@ -16,6 +19,7 @@ public class BallLauncher : MonoBehaviour
     private void Start()
     {       
         arrow.gameObject.SetActive(false);
+        animator = player.GetComponent<Animator>();
     }
 
     public void OnFire(InputAction.CallbackContext context)
@@ -57,7 +61,11 @@ public class BallLauncher : MonoBehaviour
         {
             aimDirection = Vector2.up;
         }
-               
+        
+        
+
+       
+
         UpdateArrowRotation();
     }
 
@@ -88,7 +96,15 @@ public class BallLauncher : MonoBehaviour
         if (isHolding)
         {
             holdTime += Time.deltaTime;
+
+            animator.SetBool("Aiming", true);
+            print("AIMING");
         }
+        else
+        {
+            animator.SetBool("Aiming", false);
+        }
+        
     }
 
     private void LaunchBall()
@@ -112,6 +128,7 @@ public class BallLauncher : MonoBehaviour
                     rb.velocity = Vector3.zero;
                                         
                     rb.AddForce(new Vector3(aimDirection.x, aimDirection.y, 0f) * launchForce);
+                    animator.SetTrigger("FireTrigger");
                 }
 
                 break;

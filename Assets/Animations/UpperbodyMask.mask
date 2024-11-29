@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UpperbodyMask
+  m_Mask: 00000000010000000100000000000000000000000100000001000000010000000100000000000000000000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: CharacterRig
+    m_Weight: 0
+  - m_Path: CharacterRig/Root
+    m_Weight: 0
+  - m_Path: CharacterRig/Root/footIK.l
+    m_Weight: 0
+  - m_Path: CharacterRig/Root/footIK.r
+    m_Weight: 0
+  - m_Path: CharacterRig/Root/foottarget.l
+    m_Weight: 0
+  - m_Path: CharacterRig/Root/foottarget.r
+    m_Weight: 0
+  - m_Path: CharacterRig/Root/hip.l
+    m_Weight: 0
+  - m_Path: CharacterRig/Root/hip.l/upperleg.l
+    m_Weight: 0
+  - m_Path: CharacterRig/Root/hip.l/upperleg.l/lowerleg.l
+    m_Weight: 0
+  - m_Path: CharacterRig/Root/hip.l/upperleg.l/lowerleg.l/heel.l
+    m_Weight: 0
+  - m_Path: CharacterRig/Root/hip.l/upperleg.l/lowerleg.l/heel.l/foot.l
+    m_Weight: 0
+  - m_Path: CharacterRig/Root/hip.r
+    m_Weight: 0
+  - m_Path: CharacterRig/Root/hip.r/upperleg.r
+    m_Weight: 0
+  - m_Path: CharacterRig/Root/hip.r/upperleg.r/lowerleg.r
+    m_Weight: 0
+  - m_Path: CharacterRig/Root/hip.r/upperleg.r/lowerleg.r/heel.r
+    m_Weight: 0
+  - m_Path: CharacterRig/Root/hip.r/upperleg.r/lowerleg.r/heel.r/foot.r
+    m_Weight: 0
+  - m_Path: CharacterRig/Root/IK.l
+    m_Weight: 0
+  - m_Path: CharacterRig/Root/IK.r
+    m_Weight: 0
+  - m_Path: CharacterRig/Root/IKTarget.l
+    m_Weight: 0
+  - m_Path: CharacterRig/Root/IKTarget.r
+    m_Weight: 0
+  - m_Path: CharacterRig/Root/spine1
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/Bone.002
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/collar.l
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/collar.l/upperarm.l
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/collar.l/upperarm.l/lowerarm.l
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/collar.l/upperarm.l/lowerarm.l/hand.l
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/collar.l/upperarm.l/lowerarm.l/hand.l/fingers1.l
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/collar.l/upperarm.l/lowerarm.l/hand.l/fingers1.l/fingers2.l
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/collar.l/upperarm.l/lowerarm.l/hand.l/fingers1.l/fingers2.l/fingers3.l
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/collar.l/upperarm.l/lowerarm.l/hand.l/thumb1.l
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/collar.l/upperarm.l/lowerarm.l/hand.l/thumb1.l/thumb2.l
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/collar.l/upperarm.l/lowerarm.l/hand.l/thumb1.l/thumb2.l/thumb3.l
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/collar.r
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/collar.r/upperarm.r
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/collar.r/upperarm.r/lowerarm.r
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/collar.r/upperarm.r/lowerarm.r/hand.r
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/collar.r/upperarm.r/lowerarm.r/hand.r/fingers1.r
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/collar.r/upperarm.r/lowerarm.r/hand.r/fingers1.r/fingers2.r
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/collar.r/upperarm.r/lowerarm.r/hand.r/fingers1.r/fingers2.r/fingers3.r
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/collar.r/upperarm.r/lowerarm.r/hand.r/thumb1.r
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/collar.r/upperarm.r/lowerarm.r/hand.r/thumb1.r/thumb2.r
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/collar.r/upperarm.r/lowerarm.r/hand.r/thumb1.r/thumb2.r/thumb3.r
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/neck
+    m_Weight: 1
+  - m_Path: CharacterRig/Root/spine1/spine2/spine3/neck/head
+    m_Weight: 1
+  - m_Path: CharacterV3
+    m_Weight: 0

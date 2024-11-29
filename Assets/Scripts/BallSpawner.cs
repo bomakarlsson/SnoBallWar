@@ -15,10 +15,14 @@ public class BallSpawner : MonoBehaviour
 
     private PlayerMovement playerMovement; // Reference to the PlayerMovement script
 
+    Animator animator;
+
     private void Start()
     {
         // Find the PlayerMovement script on the same object or parent
         playerMovement = GetComponentInParent<PlayerMovement>();
+
+        animator = GetComponentInParent<Animator>();
 
         if (playerMovement != null)
         {
@@ -69,8 +73,14 @@ public class BallSpawner : MonoBehaviour
             {
                 SpawnBall();
                 holdTime = 0f; // Reset hold time to allow for continuous spawning
+                animator.SetBool("Reloading", true);
             }
         }
+        else
+        {
+            animator.SetBool("Reloading", false);
+        }
+
 
         // Monitor and log ball count changes
         if (transform.childCount != lastBallCount)

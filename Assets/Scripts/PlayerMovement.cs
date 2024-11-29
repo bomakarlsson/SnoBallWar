@@ -3,16 +3,20 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool CanMove = true;
+
     public Rigidbody2D rb; 
     public Transform groundCheck; 
     public LayerMask groundLayer;
+    
 
     private float horizontal;
     [SerializeField] float speed = 8f;
     [SerializeField] float jumpingPower = 16f;
     private bool isFacingRight = true;
 
-    private Vector2 aimDirection = Vector2.zero; 
+    private Vector2 aimDirection = Vector2.zero;
+
 
     void Update()
     {
@@ -51,9 +55,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void Move(InputAction.CallbackContext context)
-    {        
+    {
         horizontal = context.ReadValue<Vector2>().x;
     }
+        
 
     public void Aim(InputAction.CallbackContext context)
     {     

@@ -1,0 +1,495 @@
+fileFormatVersion: 2
+guid: 37ef14bc570ccfd49adab22a4a0f14fc
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: CharacterRig|Death
+      takeName: CharacterRig|Death
+      internalID: -2105470742450688403
+      firstFrame: 0
+      lastFrame: 48
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: CharacterRig
+        weight: 1
+      - path: CharacterRig/Root
+        weight: 1
+      - path: CharacterRig/Root/footIK.l
+        weight: 1
+      - path: CharacterRig/Root/footIK.r
+        weight: 1
+      - path: CharacterRig/Root/foottarget.l
+        weight: 1
+      - path: CharacterRig/Root/foottarget.r
+        weight: 1
+      - path: CharacterRig/Root/hip.l
+        weight: 1
+      - path: CharacterRig/Root/hip.l/upperleg.l
+        weight: 1
+      - path: CharacterRig/Root/hip.l/upperleg.l/lowerleg.l
+        weight: 1
+      - path: CharacterRig/Root/hip.l/upperleg.l/lowerleg.l/heel.l
+        weight: 1
+      - path: CharacterRig/Root/hip.l/upperleg.l/lowerleg.l/heel.l/foot.l
+        weight: 1
+      - path: CharacterRig/Root/hip.r
+        weight: 1
+      - path: CharacterRig/Root/hip.r/upperleg.r
+        weight: 1
+      - path: CharacterRig/Root/hip.r/upperleg.r/lowerleg.r
+        weight: 1
+      - path: CharacterRig/Root/hip.r/upperleg.r/lowerleg.r/heel.r
+        weight: 1
+      - path: CharacterRig/Root/hip.r/upperleg.r/lowerleg.r/heel.r/foot.r
+        weight: 1
+      - path: CharacterRig/Root/IK.l
+        weight: 1
+      - path: CharacterRig/Root/IK.r
+        weight: 1
+      - path: CharacterRig/Root/IKTarget.l
+        weight: 1
+      - path: CharacterRig/Root/IKTarget.r
+        weight: 1
+      - path: CharacterRig/Root/spine1
+        weight: 1
+      - path: CharacterRig/Root/spine1/Bone.002
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/collar.l
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/collar.l/upperarm.l
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/collar.l/upperarm.l/lowerarm.l
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/collar.l/upperarm.l/lowerarm.l/hand.l
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/collar.l/upperarm.l/lowerarm.l/hand.l/fingers1.l
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/collar.l/upperarm.l/lowerarm.l/hand.l/fingers1.l/fingers2.l
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/collar.l/upperarm.l/lowerarm.l/hand.l/fingers1.l/fingers2.l/fingers3.l
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/collar.l/upperarm.l/lowerarm.l/hand.l/thumb1.l
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/collar.l/upperarm.l/lowerarm.l/hand.l/thumb1.l/thumb2.l
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/collar.l/upperarm.l/lowerarm.l/hand.l/thumb1.l/thumb2.l/thumb3.l
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/collar.r
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/collar.r/upperarm.r
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/collar.r/upperarm.r/lowerarm.r
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/collar.r/upperarm.r/lowerarm.r/hand.r
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/collar.r/upperarm.r/lowerarm.r/hand.r/fingers1.r
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/collar.r/upperarm.r/lowerarm.r/hand.r/fingers1.r/fingers2.r
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/collar.r/upperarm.r/lowerarm.r/hand.r/fingers1.r/fingers2.r/fingers3.r
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/collar.r/upperarm.r/lowerarm.r/hand.r/thumb1.r
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/collar.r/upperarm.r/lowerarm.r/hand.r/thumb1.r/thumb2.r
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/collar.r/upperarm.r/lowerarm.r/hand.r/thumb1.r/thumb2.r/thumb3.r
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/neck
+        weight: 1
+      - path: CharacterRig/Root/spine1/spine2/spine3/neck/head
+        weight: 1
+      - path: CharacterV3
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterRig|Fall
+      takeName: CharacterRig|Fall
+      internalID: -8977704977483351525
+      firstFrame: 0
+      lastFrame: 119
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterRig|Hit
+      takeName: CharacterRig|Hit
+      internalID: -5762518316871806331
+      firstFrame: 0
+      lastFrame: 8
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterRig|Idle
+      takeName: CharacterRig|Idle
+      internalID: 1462021494730937107
+      firstFrame: 0
+      lastFrame: 99
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterRig|Jump
+      takeName: CharacterRig|Jump
+      internalID: -8655822112533036825
+      firstFrame: 0
+      lastFrame: 15
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterRig|ReloadLoop
+      takeName: CharacterRig|ReloadLoop
+      internalID: -9166422684635185800
+      firstFrame: 0
+      lastFrame: 61
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterRig|ReloadStart
+      takeName: CharacterRig|ReloadStart
+      internalID: 1861354743966046431
+      firstFrame: 0
+      lastFrame: 14
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterRig|Run
+      takeName: CharacterRig|Run
+      internalID: -7799225247399967932
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterRig|ThrowCharge
+      takeName: CharacterRig|ThrowCharge
+      internalID: -7763385690422016995
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: CharacterRig|ThrowFire
+      takeName: CharacterRig|ThrowFire
+      internalID: 8152871377619156184
+      firstFrame: 0
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

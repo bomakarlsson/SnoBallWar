@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    Animator animator;
+
     [SerializeField] public int maxHealth = 100;
     private int currentHealth;
 
@@ -15,6 +17,8 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
+
         currentHealth = maxHealth;
 
         winCanvasTeam1 = GameObject.FindWithTag("Team1WinCanvas");
@@ -33,6 +37,8 @@ public class PlayerHealth : MonoBehaviour
         if ((teamTag == "Team 1" && ballTag == "Team 2") || (teamTag == "Team 2" && ballTag == "Team 1"))
         {
             TakeDamage(10);
+            animator.SetTrigger("HitTrigger");
+
         }
     }
 
