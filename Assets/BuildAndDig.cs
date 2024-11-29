@@ -25,6 +25,9 @@ public class BuildAndDig : MonoBehaviour
 
     void Awake()
     {
+        if (tilePlacer == null)
+            tilePlacer = FindObjectOfType<TilePlacer>();
+
         aimDrawer = GetComponent<DrawLineTo>();
         aimDrawer.enabled = false;
 
