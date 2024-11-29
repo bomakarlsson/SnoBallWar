@@ -35,7 +35,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ReloadingStart
-  m_Speed: 1
+  m_Speed: 50
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -2811428984045234609}
@@ -698,7 +698,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ReloadingLoop
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -4205079740425372159}

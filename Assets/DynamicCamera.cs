@@ -1,92 +1,95 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class DynamicCamera : MonoBehaviour
+public class CenteringCamera : MonoBehaviour
 {
-    [SerializeField] private float zoomSpeed = 2f; // How quickly the camera adjusts zoom
-    [SerializeField] private float minFOV = 30f; // Minimum field of view
-    [SerializeField] private float maxFOV = 60f; // Maximum field of view
-    [SerializeField] private float extraPadding = 5f; // Extra padding for the zoom
-    [SerializeField] private float refreshRate = 0.5f; // How often to refresh tracked objects
-    [SerializeField] private LayerMask playerLayer; // Layer mask for "Player" objects
+    [SerializeField] private LayerMask playerLayer; // Assign the "Player" layer in the Inspector
+    [SerializeField] private float followSpeed = 2f; // Speed at which the camera follows
+    [SerializeField] private float heightOffset = -10f; // Fixed Z-offset for the camera
 
-    private List<Transform> trackedObjects = new List<Transform>();
-    private float cameraZOffset = -10f;
+    [Header("Zoom Settings")]
+    [SerializeField] private float minFOV = 30f; // Minimum Field of View (zoomed in)
+    [SerializeField] private float maxFOV = 60f; // Maximum Field of View (zoomed out)
+    [SerializeField] private float maxDistance = 20f; // Maximum distance for FOV adjustment
+    [SerializeField] private float zoomSpeed = 2f; // Speed of FOV adjustment
 
-    private void Start()
-    {
-        // Refresh the list of tracked objects periodically
-        InvokeRepeating(nameof(UpdateTrackedObjects), 0f, refreshRate);
-    }
+    private List<Transform> playerTransforms = new List<Transform>();
 
     private void Update()
     {
-        if (trackedObjects.Count > 0)
-        {
-            // Calculate the midpoint of all tracked objects
-            Vector3 midpoint = CalculateMidpoint();
-            Debug.Log($"Midpoint calculated: {midpoint}");
-
-            transform.position = new Vector3(midpoint.x, midpoint.y, cameraZOffset);
-
-            // Calculate the maximum distance between tracked objects
-            float maxDistance = CalculateMaxDistance(midpoint);
-            Debug.Log($"Maximum distance from midpoint: {maxDistance}");
-
-            // Adjust the field of view based on the maximum distance
-            float desiredFOV = Mathf.Clamp(maxDistance + extraPadding, minFOV, maxFOV);
-            Debug.Log($"Desired FOV: {desiredFOV}");
-
-            Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, desiredFOV, Time.deltaTime * zoomSpeed);
-        }
-        else
-        {
-            Debug.LogWarning("No tracked objects found! The camera cannot update.");
-        }
+        UpdatePlayerList();
+        UpdateCameraPosition();
+        UpdateCameraZoom();
     }
 
-    private void UpdateTrackedObjects()
+    private void UpdatePlayerList()
     {
-        trackedObjects.Clear();
+        playerTransforms.Clear();
 
-        // Find all objects in the "Player" layer
-        Collider[] playerColliders = Physics.OverlapSphere(Vector3.zero, Mathf.Infinity, playerLayer);
+        // Find all objects in the scene
+        GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
 
-        foreach (Collider col in playerColliders)
+        foreach (GameObject obj in allObjects)
         {
-            trackedObjects.Add(col.transform);
-            Debug.Log($"Added {col.name} to tracked objects (Layer: Player).");
-        }
-
-        Debug.Log($"Total tracked objects: {trackedObjects.Count}");
-    }
-
-    private Vector3 CalculateMidpoint()
-    {
-        if (trackedObjects.Count == 0) return Vector3.zero;
-
-        Vector3 totalPosition = Vector3.zero;
-        foreach (Transform obj in trackedObjects)
-        {
-            totalPosition += obj.position;
-        }
-        return totalPosition / trackedObjects.Count;
-    }
-
-    private float CalculateMaxDistance(Vector3 midpoint)
-    {
-        float maxDistance = 0f;
-        foreach (Transform obj in trackedObjects)
-        {
-            float distance = Vector3.Distance(midpoint, obj.position);
-            if (distance > maxDistance)
+            if (obj.activeInHierarchy && obj.layer == LayerMask.NameToLayer("Player"))
             {
-                maxDistance = distance;
+                playerTransforms.Add(obj.transform);
             }
         }
-        return maxDistance;
+
+        if (playerTransforms.Count == 0)
+        {
+            Debug.LogWarning("No players found! The camera will remain static.");
+        }
+    }
+
+    private void UpdateCameraPosition()
+    {
+        if (playerTransforms.Count == 0) return;
+
+        // Calculate the average X and Y positions of all players
+        Vector3 averagePosition = Vector3.zero;
+        foreach (Transform player in playerTransforms)
+        {
+            averagePosition += player.position;
+        }
+        averagePosition /= playerTransforms.Count;
+
+        // Desired camera position (fixed Z-offset)
+        Vector3 desiredPosition = new Vector3(averagePosition.x, averagePosition.y, heightOffset);
+
+        // Smoothly move the camera to the desired position
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, followSpeed * Time.deltaTime);
+    }
+
+    private void UpdateCameraZoom()
+    {
+        if (playerTransforms.Count == 0) return;
+
+        // Find the maximum distance between any two players
+        float maxDistanceBetweenPlayers = 0f;
+        for (int i = 0; i < playerTransforms.Count; i++)
+        {
+            for (int j = i + 1; j < playerTransforms.Count; j++)
+            {
+                float distance = Vector3.Distance(playerTransforms[i].position, playerTransforms[j].position);
+                if (distance > maxDistanceBetweenPlayers)
+                {
+                    maxDistanceBetweenPlayers = distance;
+                }
+            }
+        }
+
+        // Calculate the desired FOV based on the maximum distance
+        float targetFOV = Mathf.Lerp(minFOV, maxFOV, maxDistanceBetweenPlayers / maxDistance);
+
+        // Smoothly adjust the camera's FOV
+        Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, targetFOV, Time.deltaTime * zoomSpeed);
     }
 }
+
+
+
 
 
 
