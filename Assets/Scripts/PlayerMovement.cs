@@ -21,6 +21,12 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         UpdateFacingDirection();
+
+        if (IsGrounded())
+        {
+            rb.AddForce(Vector2.down * 5f);
+        }
+
     }
 
     private void FixedUpdate()
