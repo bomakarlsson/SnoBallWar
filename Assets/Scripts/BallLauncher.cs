@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class BallLauncher : MonoBehaviour
 {
@@ -25,13 +26,16 @@ public class BallLauncher : MonoBehaviour
     public void OnFire(InputAction.CallbackContext context)
     {
         if (context.started)
-        {            
+        {
             if (HasAvailableBalls())
             {
                 isHolding = true;
                 holdTime = 0f;
-                                
+
                 arrow.gameObject.SetActive(true);
+
+                // Start the scaling coroutine
+                StartCoroutine(ScaleArrow());
             }
         }
 
@@ -39,10 +43,38 @@ public class BallLauncher : MonoBehaviour
         {
             isHolding = false;
             LaunchBall();
-                        
+
             arrow.gameObject.SetActive(false);
         }
     }
+
+
+    // Coroutine to scale the arrow
+    private IEnumerator ScaleArrow()
+    {
+        // Set the initial scale of the arrow to 10
+        Vector3 initialScale = Vector3.one * 10f;
+        Vector3 targetScale = Vector3.one * 20f;
+        float scaleDuration = 1f;
+
+        arrow.transform.localScale = initialScale;
+
+        float elapsedTime = 0f;
+        while (elapsedTime < scaleDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / scaleDuration);
+
+            // Smoothly interpolate the scale from initial to target
+            arrow.transform.localScale = Vector3.Lerp(initialScale, targetScale, t);
+
+            yield return null;
+        }
+
+        // Ensure the final scale is exactly the target scale
+        arrow.transform.localScale = targetScale;
+    }
+
 
     public void OnAim(InputAction.CallbackContext context)
     {        
@@ -76,7 +108,7 @@ public class BallLauncher : MonoBehaviour
         arrow.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
-    private void UpdateArrowScale()
+   /* private void UpdateArrowScale()
     {
         // Calculate the hold time (which correlates with the launch force)
         float clampedHoldTime = Mathf.Clamp(holdTime, 0f, maxHoldTime);
@@ -89,7 +121,7 @@ public class BallLauncher : MonoBehaviour
 
         // Apply the new scale to the arrow
         arrow.localScale = new Vector3(scale, scale, 1f); // Assuming the arrow is pointing along the Z-axis
-    }
+    } */
 
     private void Update()
     {

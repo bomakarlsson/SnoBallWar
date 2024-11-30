@@ -638,7 +638,7 @@ MonoBehaviour:
   jumpingPower: 25
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   detectionDistance: 0.35
   stepUpForce: 10
   stepUpHeight: -0.65
@@ -678,7 +678,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 3927257592554278932}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 986cf0a663f63d348afaac540e92ade0, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -939,8 +939,8 @@ MonoBehaviour:
   player: {fileID: 3927257592554278932}
   spawnPoint: {fileID: 4449969637953605296}
   arrow: {fileID: 3410041779117446843}
-  minLaunchForce: 1500
-  maxLaunchForce: 3000
+  minLaunchForce: 2000
+  maxLaunchForce: 4000
   maxHoldTime: 1
 --- !u!1001 &2943207442243400016
 PrefabInstance:
