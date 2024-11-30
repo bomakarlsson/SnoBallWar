@@ -9,14 +9,18 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
 
-
     private float horizontal;
     [SerializeField] float speed = 8f;
     [SerializeField] float jumpingPower = 16f;
     private bool isFacingRight = true;
 
-    private Vector2 aimDirection = Vector2.zero;
+    [Header("Obstacle Detection")]
+    [SerializeField] private LayerMask obstacleLayer; // Define which layers count as obstacles
+    [SerializeField] private float detectionDistance = 0.5f; // Raycast distance to detect obstacles
+    [SerializeField] private float stepUpForce = 5f; // Force applied to step over obstacles
+    [SerializeField] private float stepUpHeight = 0.3f; // Height above ground to check for obstacles
 
+    private Vector2 aimDirection = Vector2.zero;
 
     void Update()
     {
@@ -25,12 +29,18 @@ public class PlayerMovement : MonoBehaviour
         if (IsGrounded())
         {
             rb.AddForce(Vector2.down * 5f);
-        }        
-    }   
+        }
+    }
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        if (CanMove)
+        {
+            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+
+            // Check and handle small obstacles
+            DetectAndStepOverObstacle();
+        }
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -78,7 +88,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-
     private void Flip()
     {
         isFacingRight = !isFacingRight;
@@ -91,7 +100,6 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontal = context.ReadValue<Vector2>().x;
     }
-
 
     public void Aim(InputAction.CallbackContext context)
     {
@@ -118,7 +126,34 @@ public class PlayerMovement : MonoBehaviour
             Flip();
         }
     }
+
+    private void DetectAndStepOverObstacle()
+    {
+        // Only perform the raycast if the player is moving
+        if (Mathf.Abs(horizontal) > 0.01f) // Check if there is significant horizontal input
+        {
+            // Determine raycast origin and direction based on facing direction
+            Vector2 rayOrigin = new Vector2(transform.position.x, transform.position.y + stepUpHeight);
+            Vector2 rayDirection = isFacingRight ? Vector2.right : Vector2.left;
+
+            // Perform raycast to detect obstacles
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, detectionDistance, obstacleLayer);
+
+            if (hit.collider != null)
+            {
+                Debug.Log($"Obstacle detected: {hit.collider.name}");
+
+                // Apply upward force to step over the obstacle
+                rb.velocity = new Vector2(rb.velocity.x, stepUpForce);
+            }
+
+            // Debug visualization in Scene view
+            Debug.DrawRay(rayOrigin, rayDirection * detectionDistance, Color.red);
+        }
+    }
+
 }
+
 
 
 
