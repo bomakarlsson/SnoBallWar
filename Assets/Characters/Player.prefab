@@ -636,6 +636,12 @@ MonoBehaviour:
     m_Bits: 8
   speed: 14
   jumpingPower: 25
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  detectionDistance: 0.35
+  stepUpForce: 10
+  stepUpHeight: -0.65
 --- !u!50 &1667382220263661810
 Rigidbody2D:
   serializedVersion: 4
