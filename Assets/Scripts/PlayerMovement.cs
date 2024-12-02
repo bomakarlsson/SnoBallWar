@@ -22,6 +22,17 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 aimDirection = Vector2.zero;
 
+    Animator animator;
+
+    private void Start()
+    {
+        
+        
+        animator = GetComponent<Animator>();
+
+       
+    }
+
     void Update()
     {
         UpdateFacingDirection();
@@ -48,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            animator.SetTrigger("Jump");
         }
 
         if (context.canceled && rb.velocity.y > 0f)
