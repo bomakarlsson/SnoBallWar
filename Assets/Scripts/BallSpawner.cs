@@ -77,7 +77,7 @@ public class BallSpawner : MonoBehaviour
             }
         }
         else
-        {
+        { 
             animator.SetBool("Reloading", false);
         }
 
