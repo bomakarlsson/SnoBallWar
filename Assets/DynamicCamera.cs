@@ -37,10 +37,11 @@ public class CenteringCamera : MonoBehaviour
             }
         }
 
-        if (playerTransforms.Count == 0)
+       /* if (playerTransforms.Count == 0)
         {
             Debug.LogWarning("No players found! The camera will remain static.");
-        }
+        } 
+       */
     }
 
     private void UpdateCameraPosition()

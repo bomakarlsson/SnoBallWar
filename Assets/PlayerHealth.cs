@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
 
     private GameObject winCanvasTeam1;
     private GameObject winCanvasTeam2;
+    private GameObject backCanvas; // Reference to the "Back" canvas
 
     private void Start()
     {
@@ -23,12 +24,13 @@ public class PlayerHealth : MonoBehaviour
 
         winCanvasTeam1 = GameObject.FindWithTag("Team1WinCanvas");
         winCanvasTeam2 = GameObject.FindWithTag("Team2WinCanvas");
+        backCanvas = GameObject.FindWithTag("Back"); // Find the "Back" canvas by tag
 
         if (healthSlider != null)
         {
             healthSlider.maxValue = maxHealth; // Set slider max value
             healthSlider.value = currentHealth; // Initialize slider value
-        }       
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -38,7 +40,6 @@ public class PlayerHealth : MonoBehaviour
         {
             TakeDamage(10);
             animator.SetTrigger("HitTrigger");
-
         }
     }
 
@@ -82,7 +83,7 @@ public class PlayerHealth : MonoBehaviour
             }
         }
 
-        // Activate the children of the win canvas for the opposing team if no teammates remain
+        // Activate the children of the win canvas for the opposing team and the Back canvas if no teammates remain
         if (!hasTeammates)
         {
             if (teamTag == "Team 1" && winCanvasTeam2 != null)
@@ -94,6 +95,13 @@ public class PlayerHealth : MonoBehaviour
             {
                 ToggleCanvasChildren(winCanvasTeam1, true);
                 Debug.Log("Team 1 wins! Activating Team1WinCanvas children.");
+            }
+
+            // Activate the children of the "Back" canvas
+            if (backCanvas != null)
+            {
+                ToggleCanvasChildren(backCanvas, true);
+                Debug.Log("Activating Back canvas children.");
             }
         }
     }
@@ -107,6 +115,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 }
+
 
 
 

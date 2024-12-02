@@ -8,6 +8,7 @@ TagManager:
   - Team 2
   - Team1WinCanvas
   - Team2WinCanvas
+  - Back
   layers:
   - Default
   - TransparentFX
