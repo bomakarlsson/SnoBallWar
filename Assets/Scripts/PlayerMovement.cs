@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     [SerializeField] float speed = 8f;
     [SerializeField] float jumpingPower = 16f;
+    [SerializeField] PhysicsMaterial2D slipperyMaterial;
+    private CapsuleCollider2D playerCollider;
     private bool isFacingRight = true;
 
     [Header("Obstacle Detection")]
@@ -30,7 +32,8 @@ public class PlayerMovement : MonoBehaviour
         
         animator = GetComponent<Animator>();
 
-       
+        // OBS gets the first capsule collider component of the GameObject
+        playerCollider = GetComponent<CapsuleCollider2D>();
     }
 
     void Update()
@@ -52,6 +55,13 @@ public class PlayerMovement : MonoBehaviour
             // Check and handle small obstacles
             DetectAndStepOverObstacle();
         }
+
+        playerCollider.sharedMaterial = !IsGrounded() || horizontal != 0 ? slipperyMaterial : null;
+    }
+
+    private void OnDisable()
+    {
+        playerCollider.sharedMaterial = null;
     }
 
     public void Jump(InputAction.CallbackContext context)
