@@ -81,9 +81,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePlacer: {fileID: 0}
   aimDistance: 7
-  fillRadius: 1.5
-  digFillMultiplier: 1.8
-  buildTime: 0.3
+  fillRadius: 2.5
+  digFillMultiplier: 2.8
+  buildTime: 0.1
   digTime: 0.3
   squareBuild: 0
   squareDig: 0
@@ -639,7 +639,7 @@ MonoBehaviour:
   slipperyMaterial: {fileID: 6200000, guid: 986cf0a663f63d348afaac540e92ade0, type: 2}
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   detectionDistance: 0.35
   stepUpForce: 10
   stepUpHeight: -0.65
