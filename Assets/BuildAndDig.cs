@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -82,17 +83,42 @@ public class BuildAndDig : MonoBehaviour
     {
         yield return new WaitForSeconds(buildTime);
 
-        while (true)
+        Vector2 firstBuildPosition = hitPosition;
+        Vector2 buildDirection = Vector2.zero;
+
+        for (int i = 0; true; i++)
         {
-            if (validBuild)
+            if (i <= 1)
             {
-                if (squareBuild)
-                    tilePlacer.FillSquareWithTiles(hitPosition, fillRadius);
-                else
-                    tilePlacer.FillCircleWithTiles(hitPosition, fillRadius);
-                Debug.Log("Building");
+                if (validBuild)
+                {
+                    if (squareBuild)
+                        tilePlacer.FillSquareWithTiles(hitPosition, fillRadius);
+                    else
+                        tilePlacer.FillCircleWithTiles(hitPosition, fillRadius);
+                    Debug.Log("Building");
+                }
+
+                if (i == 1)
+                {
+                    buildDirection = hitPosition - firstBuildPosition;
+                    buildDirection.Normalize();
+                }
             }
-            validBuild = false;
+            else
+            { 
+                Vector2 newPlacePosition = firstBuildPosition + buildDirection * fillRadius / 2 * i;
+                if (Vector2.Distance(newPlacePosition, transform.position) <= aimDistance && 
+                    GetPlayerHit(newPlacePosition).collider == null)
+                {
+                    if (squareBuild)
+                        tilePlacer.FillSquareWithTiles(newPlacePosition, fillRadius);
+                    else
+                        tilePlacer.FillCircleWithTiles(newPlacePosition, fillRadius);
+                    Debug.Log("Building");
+                }
+            }
+            
             yield return new WaitForSeconds(buildTime);
         }
     }
@@ -111,7 +137,6 @@ public class BuildAndDig : MonoBehaviour
                     tilePlacer.FillCircleWithTiles(hitPosition, fillRadius * digFillMultiplier, false);
                 Debug.Log("Digging");
             }
-            validDig = false;
             yield return new WaitForSeconds(digTime);
         }
     }
@@ -182,10 +207,7 @@ public class BuildAndDig : MonoBehaviour
             DigIndicator.enabled = true;
         }
 
-        // OBS checks for all colliders in player layer
-        // (should maybe be square cast)
-        RaycastHit2D playerHit = Physics2D.CircleCast(groundHit.point, fillRadius, Vector2.zero, 0f, LayerMask.GetMask("Player"));
-        if (playerHit.collider == null)
+        if (GetPlayerHit(hitPosition).collider == null)
         {
             validBuild = true;
             if (drawIndicators)
@@ -199,5 +221,12 @@ public class BuildAndDig : MonoBehaviour
             validBuild = false;
             BuildIndicator.enabled = false;
         }
+    }
+
+    // OBS checks for all colliders in player layer
+    // (should maybe be square cast)
+    RaycastHit2D GetPlayerHit(Vector2 fillPosition)
+    {
+        return Physics2D.CircleCast(fillPosition, fillRadius, Vector2.zero, 0f, LayerMask.GetMask("Player"));
     }
 }
