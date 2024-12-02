@@ -155,11 +155,12 @@ public class PlayerMovement : MonoBehaviour
         if (Mathf.Abs(horizontal) > 0.01f) // Check if there is significant horizontal input
         {
             // Determine raycast origin and direction based on facing direction
-            Vector2 rayOrigin = new Vector2(transform.position.x, transform.position.y + stepUpHeight);
             Vector2 rayDirection = isFacingRight ? Vector2.right : Vector2.left;
+            Vector2 rayOrigin = new Vector2(transform.position.x - rayDirection.x * detectionDistance, 
+                                            transform.position.y + stepUpHeight);
 
             // Perform raycast to detect obstacles
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, detectionDistance, obstacleLayer);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, detectionDistance * 2, obstacleLayer);
 
             if (hit.collider != null)
             {
