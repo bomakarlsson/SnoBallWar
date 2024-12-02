@@ -84,11 +84,13 @@ public class BuildAndDig : MonoBehaviour
         yield return new WaitForSeconds(buildTime);
 
         Vector2 firstBuildPosition = hitPosition;
+        bool isBuildingConsecutive = false;
         Vector2 buildDirection = Vector2.zero;
-
-        for (int i = 0; true; i++)
+        int i = 0;
+       
+        while (true)
         {
-            if (i <= 1)
+            if (!isBuildingConsecutive)
             {
                 if (validBuild)
                 {
@@ -99,14 +101,17 @@ public class BuildAndDig : MonoBehaviour
                     Debug.Log("Building");
                 }
 
-                if (i == 1)
+                if (hitPosition != firstBuildPosition)
                 {
+                    isBuildingConsecutive = true;
                     buildDirection = hitPosition - firstBuildPosition;
                     buildDirection.Normalize();
+                    i = 1;
                 }
             }
             else
             { 
+                i++;
                 Vector2 newPlacePosition = firstBuildPosition + buildDirection * fillRadius / 2 * i;
                 if (Vector2.Distance(newPlacePosition, transform.position) <= aimDistance && 
                     GetPlayerHit(newPlacePosition).collider == null)
