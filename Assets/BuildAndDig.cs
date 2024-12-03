@@ -101,7 +101,9 @@ public class BuildAndDig : MonoBehaviour
                     Debug.Log("Building");
                 }
 
-                if (hitPosition != firstBuildPosition)
+                Vector2 difference = hitPosition - firstBuildPosition;
+
+                if (difference.magnitude > fillRadius / 2)
                 {
                     isBuildingConsecutive = true;
                     buildDirection = hitPosition - firstBuildPosition;
