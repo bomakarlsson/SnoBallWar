@@ -12,14 +12,14 @@ public class TilePlacer : MonoBehaviour
     void Awake()
     {
         tilemap = GetComponent<Tilemap>();
-        tileSize = transform.parent.GetComponent<Grid>().cellSize.x;
+        tileSize = transform.parent.GetComponent<Grid>().cellSize.x * transform.localScale.x;
     }
 
     public float GetTileSize()
     {
         return tileSize;
     }
-    
+
     void placeTile(Vector3Int cellPosition)
     {
         tilemap.SetTile(cellPosition, tile);

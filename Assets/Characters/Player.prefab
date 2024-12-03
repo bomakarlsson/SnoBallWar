@@ -81,9 +81,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePlacer: {fileID: 0}
   aimDistance: 7
-  precisionRadius: 1
-  fillRadius: 2.5
-  digFillMultiplier: 2.8
+  autoAimRadius: 1.5
+  fillRadius: 1.5
+  digFillMultiplier: 1.5
   buildTime: 0.1
   digTime: 0.3
   squareBuild: 0
