@@ -33,11 +33,12 @@ public class BuildAndDig : MonoBehaviour
         aimDrawer.enabled = false;
 
         BuildIndicator = transform.GetChild(1).GetComponent<SpriteRenderer>();
-        BuildIndicator.transform.localScale = Vector3.one * fillRadius;
+        // Times 2 because the scale is the diameter
+        BuildIndicator.transform.localScale = Vector3.one * fillRadius * tilePlacer.GetTileSize() * 2;
         BuildIndicator.enabled = false;
 
         DigIndicator = transform.GetChild(0).GetComponent<SpriteRenderer>();
-        DigIndicator.transform.localScale = Vector3.one * fillRadius * digFillMultiplier;
+        DigIndicator.transform.localScale = BuildIndicator.transform.localScale * digFillMultiplier;
         DigIndicator.enabled = false;
     }
 
