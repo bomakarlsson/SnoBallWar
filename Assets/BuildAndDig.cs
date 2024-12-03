@@ -108,12 +108,11 @@ public class BuildAndDig : MonoBehaviour
                     isBuildingConsecutive = true;
                     buildDirection = hitPosition - firstBuildPosition;
                     buildDirection.Normalize();
-                    i = 1;
+                    i = 2;
                 }
             }
             else
             { 
-                i++;
                 Vector2 newPlacePosition = firstBuildPosition + buildDirection * fillRadius / 2 * i;
                 if (Vector2.Distance(newPlacePosition, transform.position) <= aimDistance && 
                     GetPlayerHit(newPlacePosition).collider == null)
@@ -123,6 +122,7 @@ public class BuildAndDig : MonoBehaviour
                     else
                         tilePlacer.FillCircleWithTiles(newPlacePosition, fillRadius);
                     Debug.Log("Building");
+                    i++;
                 }
             }
             
