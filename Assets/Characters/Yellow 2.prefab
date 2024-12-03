@@ -905,9 +905,13 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Team 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7713589232263638393, guid: 7a2074adc1036de4e844471492a8aa24, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 06f2192d4fc48aa4fb65f9c6eb4965ba, type: 2}
     - target: {fileID: 7881098663630648545, guid: 7a2074adc1036de4e844471492a8aa24, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7881098663630648545, guid: 7a2074adc1036de4e844471492a8aa24, type: 3}
       propertyPath: m_ActionEvents.Array.data[15].m_ActionId
@@ -924,6 +928,14 @@ PrefabInstance:
     - target: {fileID: 7881098663630648545, guid: 7a2074adc1036de4e844471492a8aa24, type: 3}
       propertyPath: m_ActionEvents.Array.data[16].m_ActionName
       value: Player/Dig[/DualShock4GamepadHID/leftTrigger,/DualShock4GamepadHID1/leftTrigger,/DualShock4GamepadHID/rightTrigger,/DualShock4GamepadHID1/rightTrigger,/Keyboard/shift,/Mouse/leftButton]
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881098663630648545, guid: 7a2074adc1036de4e844471492a8aa24, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_ActionName
+      value: Player/InBuildMode[/DualShock4GamepadHID/leftTrigger,/DualShock4GamepadHID1/leftTrigger,/Keyboard/shift]
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881098663630648545, guid: 7a2074adc1036de4e844471492a8aa24, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8489551881588388974, guid: 7a2074adc1036de4e844471492a8aa24, type: 3}
       propertyPath: ballUIImages.Array.size
