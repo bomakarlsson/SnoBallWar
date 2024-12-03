@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,6 +6,7 @@ public class BuildAndDig : MonoBehaviour
 {
     [SerializeField] TilePlacer tilePlacer;
     [SerializeField] float aimDistance = 7f;
+    [SerializeField] float autoAimRadius = 1f;
     [SerializeField] float fillRadius = 1f;
     [SerializeField] float digFillMultiplier = 1f;
     [SerializeField] float buildTime, digTime = 0.5f;
@@ -186,23 +186,27 @@ public class BuildAndDig : MonoBehaviour
             return;
         }
 
-        Ray2D ray = new Ray2D(transform.position, aimDirection);
+        Vector2 endOfAim = (Vector2)transform.position + aimDirection * aimDistance;
         
         if (drawIndicators)
         {
-            // Debug.DrawRay(ray.origin, ray.direction * aimDistance, Color.red);
-            aimDrawer.target = (Vector2)transform.position + aimDirection * aimDistance;
+            aimDrawer.target = endOfAim;
             aimDrawer.enabled = true;
         }
 
-        RaycastHit2D groundHit = Physics2D.Raycast(ray.origin, ray.direction, aimDistance, LayerMask.GetMask("Ground"));
+        RaycastHit2D groundHit = Physics2D.Raycast(transform.position, aimDirection, aimDistance, LayerMask.GetMask("Ground"));
         if (groundHit.collider == null)
         {
-            validDig = false;
-            validBuild = false;
-            DigIndicator.enabled = false;
-            BuildIndicator.enabled = false;
-            return;
+            groundHit = Physics2D.CircleCast(endOfAim, autoAimRadius, Vector2.zero, 0f, LayerMask.GetMask("Ground"));
+
+            if (groundHit.collider == null)
+            {
+                validDig = false;
+                validBuild = false;
+                DigIndicator.enabled = false;
+                BuildIndicator.enabled = false;
+                return;
+            }
         }
 
         hitPosition = groundHit.point;

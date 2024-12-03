@@ -11,7 +11,6 @@ public class DrawLineTo : MonoBehaviour
     void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
-        DisableLine();
     }
 
     void OnEnable()
@@ -20,11 +19,6 @@ public class DrawLineTo : MonoBehaviour
     }
 
     void OnDisable()
-    {
-        DisableLine();
-    }
-
-    void DisableLine()
     {
         lineRenderer.enabled = false;
     }
